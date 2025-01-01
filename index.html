@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharlex Boutique - Teen, Children, & Women Dresses</title>
+    <title>Sharlex Boutique - Fashion for All Ages</title>
     <style>
         body {
             font-family: 'Roboto', Arial, sans-serif;
@@ -13,14 +13,15 @@
             color: #333;
         }
         .header {
-            background-color: #343a40;
+            background-color: #007bff;
             color: #fff;
             padding: 20px;
             text-align: center;
             font-size: 1.5rem;
+            animation: fadeIn 2s ease;
         }
         .hero {
-            background: url('https://via.placeholder.com/1500x600?text=Festive+New+Arrivals') no-repeat center center/cover;
+            background: url('https://via.placeholder.com/1500x600?text=Welcome+to+Sharlex+Boutique') no-repeat center center/cover;
             color: white;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             height: 80vh;
@@ -30,6 +31,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            animation: slideIn 1.5s ease;
         }
         .hero h1 {
             font-size: 3.5rem;
@@ -48,13 +50,16 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            transition: transform 0.3s ease;
         }
         .cta-button:hover {
             background-color: #1eaf58;
+            transform: scale(1.1);
         }
         .collections {
             padding: 60px 20px;
             text-align: center;
+            animation: fadeInUp 2s ease;
         }
         .collections h2 {
             margin-bottom: 20px;
@@ -73,6 +78,10 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .collection-item:hover {
+            transform: scale(1.05);
         }
         .collection-item img {
             width: 100%;
@@ -87,10 +96,17 @@
             font-size: 1rem;
             color: #555;
         }
+        .countdown {
+            margin: 30px 0;
+            font-size: 1.5rem;
+            color: #007bff;
+            animation: pulse 1s infinite alternate;
+        }
         .contact-section {
             padding: 40px;
             background-color: #f4f4f9;
             text-align: center;
+            animation: fadeInUp 2s ease;
         }
         .contact-section h2 {
             font-size: 2.5rem;
@@ -101,11 +117,29 @@
             font-size: 1.2rem;
         }
         .footer {
-            background-color: #343a40;
+            background-color: #007bff;
             color: white;
             text-align: center;
             padding: 20px;
             font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
         }
     </style>
 </head>
@@ -115,33 +149,41 @@
     </div>
 
     <section class="hero">
-        <h1>Elegant Dresses for Every Occasion</h1>
-        <p>Discover stunning collections for teens, children, women, shoes, and baby clothes.</p>
+        <h1>Elegant Styles for Everyone</h1>
+        <p>Shop Women’s Clothes, Teen Outfits, Baby Clothes, Shoes, and Toys!</p>
         <a href="https://wa.me/2349078608565" class="cta-button">Shop Now on WhatsApp</a>
+        <div class="countdown">
+            <p><strong>Limited Time Offer: </strong><span id="timer">Loading...</span></p>
+        </div>
     </section>
 
     <section class="collections" id="collections">
         <h2>Our Collections</h2>
         <div class="collection-items">
             <div class="collection-item">
-                <img src="/mnt/data/w3.jpg" alt="Women's Dresses">
-                <h3>Women's Dresses</h3>
+                <img src="/mnt/data/w3.jpg" alt="Women’s Clothes">
+                <h3>Women’s Clothes</h3>
                 <p>Chic and elegant outfits for every occasion.</p>
+            </div>
+            <div class="collection-item">
+                <img src="/mnt/data/teen.jpg" alt="Teen Outfits">
+                <h3>Teen Outfits</h3>
+                <p>Trendy and stylish outfits for young fashionistas.</p>
             </div>
             <div class="collection-item">
                 <img src="/mnt/data/baby.jpg" alt="Baby Clothes">
                 <h3>Baby Clothes</h3>
-                <p>Adorable and comfortable outfits for little ones.</p>
+                <p>Adorable and comfortable clothing for little ones.</p>
             </div>
             <div class="collection-item">
                 <img src="/mnt/data/shoes.jpg" alt="Shoes">
                 <h3>Shoes</h3>
-                <p>Trendy footwear to complete your look.</p>
+                <p>Stylish footwear for every step you take.</p>
             </div>
             <div class="collection-item">
-                <img src="https://via.placeholder.com/300?text=Teen+Dresses" alt="Teen Dresses">
-                <h3>Teen Dresses</h3>
-                <p>Stylish and trendy outfits perfect for young fashionistas.</p>
+                <img src="https://via.placeholder.com/300?text=Toys" alt="Toys">
+                <h3>Toys</h3>
+                <p>Fun and educational toys for kids of all ages.</p>
             </div>
         </div>
     </section>
@@ -156,5 +198,25 @@
     <div class="footer">
         <p>&copy; 2024 Sharlex Boutique. All Rights Reserved.</p>
     </div>
-</body>
-</html>
+
+    <script>
+        // Countdown Timer Script
+        const countdownDate = new Date().getTime() + 5 * 24 * 60 * 60 * 1000; // 5 days from now
+        const timer = document.getElementById('timer');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                timer.innerHTML = "Offer expired!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timer.innerHTML = `${days}d ${hours}h ${minutes
+
