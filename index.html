@@ -12,16 +12,26 @@
             background-color: #f8f9fa;
             color: #333;
         }
-        .header {
+        .navbar {
             background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            animation: fadeIn 2s ease;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 15px;
+            font-size: 1.1rem;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
         }
         .hero {
-            background: url(https://github.com/Nobleseo/sharlexy/blob/0cfcc952e1a67a47ce3c4ea59cfd9abeddb2c0ad/sharles.jpg)text=Welcome+to+Sharlex+Boutique') no-repeat center center/cover;
+            background: url('/mnt/data/sharles.jpg') no-repeat center center/cover;
             color: white;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             height: 80vh;
@@ -31,14 +41,13 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            animation: slideIn 1.5s ease;
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 10px;
         }
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
         .cta-button {
@@ -50,16 +59,13 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            transition: transform 0.3s ease;
         }
         .cta-button:hover {
             background-color: #1eaf58;
-            transform: scale(1.1);
         }
         .collections {
             padding: 60px 20px;
             text-align: center;
-            animation: fadeInUp 2s ease;
         }
         .collections h2 {
             margin-bottom: 20px;
@@ -78,10 +84,11 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .collection-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         }
         .collection-item img {
             width: 100%;
@@ -95,18 +102,30 @@
         .collection-item p {
             font-size: 1rem;
             color: #555;
+            margin-bottom: 10px;
+        }
+        .collection-item .buy-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .collection-item .buy-button:hover {
+            background-color: #0056b3;
         }
         .countdown {
             margin: 30px 0;
             font-size: 1.5rem;
             color: #007bff;
-            animation: pulse 1s infinite alternate;
         }
         .contact-section {
             padding: 40px;
             background-color: #f4f4f9;
             text-align: center;
-            animation: fadeInUp 2s ease;
         }
         .contact-section h2 {
             font-size: 2.5rem;
@@ -123,34 +142,54 @@
             padding: 20px;
             font-size: 1rem;
         }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes pulse {
-            from { opacity: 1; }
-            to { opacity: 0.5; }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .collections h2 {
+                font-size: 2rem;
+            }
+            .collection-item {
+                width: 100%;
+                max-width: 350px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar a {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Sharlex Boutique</h1>
+    <div class="navbar">
+        <div class="logo">Sharlex Boutique</div>
+        <div class="nav-links">
+            <a href="#collections">Women’s Clothes</a>
+            <a href="#collections">Teen Outfits</a>
+            <a href="#collections">Baby Clothes</a>
+            <a href="#collections">Shoes</a>
+            <a href="#collections">Toys</a>
+        </div>
     </div>
 
     <section class="hero">
         <h1>Elegant Styles for Everyone</h1>
-        <img src="tinywow_sharles_73369277.jpg" alt="Shop">
         <p>Shop Women’s Clothes, Teen Outfits, Baby Clothes, Shoes, and Toys!</p>
         <a href="https://wa.me/2349078608565" class="cta-button">Shop Now on WhatsApp</a>
         <div class="countdown">
@@ -162,29 +201,34 @@
         <h2>Our Collections</h2>
         <div class="collection-items">
             <div class="collection-item">
-                <img src="w3.jpg" alt="Women’s Clothes">>
+                <img src="w3.jpg" alt="Women’s Clothes">
                 <h3>Women’s Clothes</h3>
                 <p>Chic and elegant outfits for every occasion.</p>
+                <a href="#" class="buy-button">Shop Now</a>
             </div>
             <div class="collection-item">
                 <img src="ch.jpg" alt="Teen Outfits">
                 <h3>Teen Outfits</h3>
                 <p>Trendy and stylish outfits for young fashionistas.</p>
+                <a href="#" class="buy-button">Shop Now</a>
             </div>
             <div class="collection-item">
                 <img src="baby.jpg" alt="Baby Clothes">
                 <h3>Baby Clothes</h3>
                 <p>Adorable and comfortable clothing for little ones.</p>
+                <a href="#" class="buy-button">Shop Now</a>
             </div>
             <div class="collection-item">
-                <img src="shoes.jpg" alt="Shoes">>
+                <img src="shoes.jpg" alt="Shoes">
                 <h3>Shoes</h3>
                 <p>Stylish footwear for every step you take.</p>
+                <a href="#" class="buy-button">Shop Now</a>
             </div>
             <div class="collection-item">
                 <img src="toyus2.jpg" alt="Toys">
                 <h3>Toys</h3>
                 <p>Fun and educational toys for kids of all ages.</p>
+                <a href="#" class="buy-button">Shop Now</a>
             </div>
         </div>
     </section>
@@ -198,6 +242,9 @@
 
     <div class="footer">
         <p>&copy; 2025 Sharlex Boutique. All Rights Reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a>
+        </p>
     </div>
 
     <script>
@@ -219,9 +266,10 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timer.innerHTML = `${days}d ${hours}h ${minutes
+            timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
 
-<img src="w3.jpg" alt="Women’s Clothes">
-<img src="teen.jpg" alt="Teen Outfits">
-<img src="baby.jpg" alt="Baby Clothes">
-<img src="shoes.jpg" alt="Shoes">
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
