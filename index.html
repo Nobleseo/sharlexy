@@ -21,6 +21,15 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .navbar .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
         .navbar a {
             color: white;
             text-decoration: none;
@@ -113,6 +122,10 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .collection-item .buy-button:hover {
             background-color: #0056b3;
@@ -121,6 +134,20 @@
             margin: 30px 0;
             font-size: 1.5rem;
             color: #007bff;
+        }
+        .testimonials {
+            padding: 40px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .testimonials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .testimonial {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
         }
         .contact-section {
             padding: 40px;
@@ -153,6 +180,18 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
+            .navbar .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #007bff;
+            }
+            .navbar.expanded .nav-links {
+                display: flex;
+            }
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -166,19 +205,13 @@
                 width: 100%;
                 max-width: 350px;
             }
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .navbar a {
-                margin: 10px 0;
-            }
         }
     </style>
 </head>
 <body>
     <div class="navbar">
         <div class="logo">Sharlex Boutique</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <div class="nav-links">
             <a href="#collections">Women’s Clothes</a>
             <a href="#collections">Teen Outfits</a>
@@ -194,7 +227,6 @@
         <a href="https://wa.me/2349078608565" class="cta-button">Shop Now on WhatsApp</a>
         <div class="countdown">
             <p><strong>Limited Time Offer: </strong><span id="timer">Loading...</span></p>
-            <img src="tinywow_sharles_73369277.jpg" alt="Shop">
         </div>
     </section>
 
@@ -205,33 +237,40 @@
                 <img src="w3.jpg" alt="Women’s Clothes">
                 <h3>Women’s Clothes</h3>
                 <p>Chic and elegant outfits for every occasion.</p>
-                <a href="#" class="buy-button">Shop Now</a>
+                <a href="https://wa.me/2349078608565" class="buy-button">Buy Now <span>🛒</span></a>
             </div>
             <div class="collection-item">
                 <img src="ch.jpg" alt="Teen Outfits">
                 <h3>Teen Outfits</h3>
                 <p>Trendy and stylish outfits for young fashionistas.</p>
-                <a href="#" class="buy-button">Shop Now</a>
+                <a href="https://wa.me/2349078608565" class="buy-button">Buy Now <span>🛒</span></a>
             </div>
             <div class="collection-item">
                 <img src="baby.jpg" alt="Baby Clothes">
                 <h3>Baby Clothes</h3>
                 <p>Adorable and comfortable clothing for little ones.</p>
-                <a href="#" class="buy-button">Shop Now</a>
+                <a href="https://wa.me/2349078608565" class="buy-button">Buy Now <span>🛒</span></a>
             </div>
             <div class="collection-item">
                 <img src="shoes.jpg" alt="Shoes">
                 <h3>Shoes</h3>
                 <p>Stylish footwear for every step you take.</p>
-                <a href="#" class="buy-button">Shop Now</a>
+                <a href="https://wa.me/2349078608565" class="buy-button">Buy Now <span>🛒</span></a>
             </div>
             <div class="collection-item">
-                <img src="toyus2.jpg" alt="Toys">
+                <img src="Toyus2.jpg" alt="Toys">
                 <h3>Toys</h3>
                 <p>Fun and educational toys for kids of all ages.</p>
-                <a href="#" class="buy-button">Shop Now</a>
+                <a href="https://wa.me/2349078608565" class="buy-button">Buy Now <span>🛒</span></a>
             </div>
         </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">“Amazing quality and fast delivery! I love my new dress!” - Sarah K.</div>
+        <div class="testimonial">“The baby clothes are so comfortable and cute. My little one loves them!” - Mary J.</div>
+        <div class="testimonial">“Great customer service and top-notch products. Highly recommend!” - David Nosa.</div>
     </section>
 
     <section class="contact-section">
@@ -271,6 +310,12 @@
         }
 
         setInterval(updateCountdown, 1000);
+
+        // Toggle Navbar on Mobile
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('expanded');
+        }
     </script>
 </body>
 </html>
